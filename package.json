@@ -1,0 +1,19 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "testAPI",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZDmitrii11/ServiceTestApi.git"
+  },
+  "author": "Dmitrii",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZDmitrii11/ServiceTestApi/issues"
+  },
+  "homepage": "https://github.com/ZDmitrii11/ServiceTestApi#readme"
+}
