@@ -4,7 +4,18 @@
   "description": "testAPI",
   "main": "index.js",
   "scripts": {
-    "test": "npm dev"
+    "ci": "yarn --frozen-lockfile",
+    "clean": "rm -rf ./dist && mkdir dist",
+    "format": "eslint src --fix",
+    "lint": "yarn run build:docs && eslint src --fix",
+    "test": "yarn run build:docs && NODE_ENV=test mocha",
+    "test:coverage": "nyc --reporter=lcov npm run test",
+    "dev": "yarn run build:docs && nodemon",
+    "start": "node ./dist/server.js",
+    "build": "yarn run build:docs && npm run clean && babel ./src --out-dir dist",
+    "migration:create": "./node_modules/.bin/migrate-mongo create",
+    "build:docs": "./node_modules/.bin/swagger-cli bundle ./doc-src/openapi.yaml --outfile documentation/openapi.json --type json",
+    "hooksInit": "chmod +x hooks/* && find hooks/* -exec ln -f '{}' .git/hooks ';'"
   },
   "repository": {
     "type": "git",
@@ -25,5 +36,8 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0"
+  },
+  "dependencies": {
+    "yarn": "^1.22.19"
   }
 }
